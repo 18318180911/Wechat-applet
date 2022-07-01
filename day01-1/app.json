@@ -1,0 +1,31 @@
+{
+  "entryPagePath": "tests/index/index",
+  "pages": [
+    "pages/index/index",
+    "tests/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00ff00",
+    "navigationBarTitleText": "大聪明",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./asset/icons/home.png",
+        "selectedIconPath": "./asset/icons/home-o.png"
+      },
+      {
+        "pagePath": "tests/index/index",
+        "text": "测试",
+        "iconPath": "./asset/icons/category.png",
+        "selectedIconPath": "./asset/icons/category-o.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
