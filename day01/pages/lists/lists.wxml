@@ -1,0 +1,3 @@
+<view>{{ info }}</view>
+<image src="{{imgSrc}}" mode="aspectFit"></image>
+<view>{{randomNumber >= 5 ? '随机数大于或等于5' : '随机数小于5'}}</view>
