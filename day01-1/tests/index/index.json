@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "navigationBarBackgroundColor": "#ff5522",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "肥小猪"
 }
