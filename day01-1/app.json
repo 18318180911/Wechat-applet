@@ -1,8 +1,14 @@
 {
-  "entryPagePath": "tests/index/index",
+  "entryPagePath": "pages/navigator/navigator",
   "pages": [
+    "event/event/index",
     "pages/index/index",
-    "tests/index/index"
+    "pages/navigator/navigator",
+    "tests/index/index",
+    "case/case/case",
+    "style/style/style",
+    "image/image/image",
+    "pages/swiper/swiper"
   ],
   "window": {
     "backgroundTextStyle": "light",

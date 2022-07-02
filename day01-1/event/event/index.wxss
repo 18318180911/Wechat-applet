@@ -1,0 +1,6 @@
+/* event/event/index.wxss */
+input {
+  border: 1px solid red;
+  height: 30px;
+  width: 300px;
+}

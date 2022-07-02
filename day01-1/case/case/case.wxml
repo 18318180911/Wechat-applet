@@ -1,0 +1,7 @@
+<view class="first">
+<input bindinput="handlerInput" value="{{msg}}" placeholder="请输入水果"  type="text"/>
+<!-- 声明方法，绑定到tap事件上 -->
+<button bindtap="addFn" type="primary" size="mini">添加</button>
+</view>
+<!-- 列表渲染 -->
+<view class="second" wx:for="{{list}}" wx:key="*this">{{item}}</view>

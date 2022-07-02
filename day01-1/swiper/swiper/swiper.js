@@ -1,28 +1,11 @@
-// tests/index/index.js
+// swiper/swiper/swiper.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    msg: '大聪明',
-    weather: false,
-    imgSrc: 'http://www.itheima.com/images/logo.png',
-    id: 14,
-    show1: false,
-    hidden: false,
-    today: 4,
-    list: ['大聪明', '肥小猪'],
-    objList:[
-      {id: 1, name: 'zs1'},
-      {id: 2, name: 'zs2'},
-      {id: 3, name: 'zs3'},
-    ],
-    msg: 'dacongming',
-    num1: 7,
-    person: {
-      name: '大聪明',
-      age: 18
-    }
+
   },
 
   /**

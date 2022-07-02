@@ -1,0 +1,17 @@
+<!--event/event/index.wxml-->
+<view bindtap="btnFn">hi</view>
+<!-- 自定义 -->
+<view bindtap="btnFn1" data-name="hellow">点击1</view>
+<view bindtap="btnFn1" data-id="{{10}}">点击2</view>
+<!-- 错误写法 -->
+<view bindtap="btnFn2(10)">点击3</view>
+<!--  -->
+<view bindtap="btnFn3">{{msg}}</view>
+<view bindtap="btnFn3">{{count}}</view>
+<view>--------</view>
+<view bindtap="handlerAdd">{{list}}</view>
+<view bindtap="handlerAdd1">{{list}}</view>
+<view>-----</view>
+<input bindinput="handlerInput" value="{{msg}}" type="text"/>
+<button type="primary" bindtap="handlerSubmit">提交</button>
+<button type="warn" bindtap="handleReset">重置</button>

@@ -1,2 +1,27 @@
 <!--tests/index/index.wxml-->
-<text>hellow</text>
+<view>{{ msg }}</view>
+<view>{{weather ? '白天' : '黑夜'}}</view>
+<image src="{{imgSrc}}" mode="aspectFit"></image>
+<view id="{{id}}"></view>
+<view>----wx:if和hidden</view>
+<view wx:if="{{show1}}">显示</view>
+<view hidden="{{hidden}}">隐藏或者显示</view>
+<view>---v-if和v-elif，v-else---</view>
+<view wx:if="{{today === 1}}">星期一</view>
+<view wx:elif="{{today === 2}}">星期二</view>
+<view wx:elif="{{today === 3}}">星期三</view>
+<view wx:else="{{today === 4}}">星期四</view>
+<view>--列表循环--</view>
+<!-- 使用场景1 -->
+<!-- 第一种写法 -->
+<view wx:for="{{list}}">{{item}}</view>
+<!-- 第二种写法 -->
+<view wx:key="*this" wx:for="{{list}}" wx:for-index="i" wx:for-item="v">{{i}}--{{v}}</view>
+<!-- 使用场景2:嵌套 -->
+<view wx:for="{{objList}}" wx:for-index="i" wx:for-item="v">
+<view wx:for="{{list}}">{{i}}--{{v.name}}</view>
+</view>
+<!-- 使用场景3：数字，字符串，对象 -->
+<view wx:for="{{msg}}">{{item}}</view>
+<view wx:for="{{num1}}">{{item}}</view>
+<view wx:for="{{person}}">{{item}}---{{index}}</view>

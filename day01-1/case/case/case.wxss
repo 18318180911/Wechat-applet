@@ -1,0 +1,21 @@
+/* case/case/case.wxss */
+.first{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  /* border: 1px solid orange; */
+}
+input {
+  width: 200px;
+  height: 30px;
+  border: 1px solid green;
+}
+button {
+  width: 80px;
+  height: 30px;
+}
+.second {
+  /* margin-top: 10px; */
+  background-color: rgb(228, 177, 83);
+  border: 1px solid orange;
+}

@@ -1,0 +1,4 @@
+<!--pages/navigator/navigator.wxml-->
+<navigator url="/pages/swiper/swiper">点击</navigator>
+<navigator open-type="switchTab" url="/pages/index/index">点击1</navigator>
+<navigator open-type="navigate">返回</navigator>

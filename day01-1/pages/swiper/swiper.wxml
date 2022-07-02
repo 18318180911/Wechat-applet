@@ -1,0 +1,11 @@
+<swiper indicator-dots 	circular interval="2000" autoplay style="height: 340rpx;">
+<swiper-item>
+<image style="width: 100%;" mode="widthFix" src="/imagse/floor_2.png"></image>
+</swiper-item>
+<swiper-item>
+<image style="width: 100%;" mode="widthFix" src="/imagse/product.png"></image>
+</swiper-item>
+<swiper-item>
+<image style="width: 100%;" mode="widthFix" src="/imagse/product_big.png"></image>
+</swiper-item>
+</swiper>

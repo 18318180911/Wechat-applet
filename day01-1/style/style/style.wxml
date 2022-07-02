@@ -1,0 +1,12 @@
+<view>--块级元素--</view>
+<view>块级元素</view>
+<view>块级元素</view>
+<view>--行内元素--</view>
+<text>行内元素</text>
+<text>行内元素</text>
+<text>行内元素</text>
+<view>--images--</view>
+<image mode="aspectFit" src="/imagse/1.jpg"></image>
+<image style="width: 230px;" mode="widthFix" src="/imagse/floor_1.png"></image>
+<image style="height: 300px" mode="heightFit" src="/imagse/1.jpg"></image>
+<image style="width: 230px;" mode="widthFix" src="/imagse/floor_1.png"></image>
