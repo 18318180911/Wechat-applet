@@ -1,0 +1,2 @@
+<!--pages/one/one/one.wxml-->
+<my-test1 bindhi="handhi"></my-test1>

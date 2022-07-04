@@ -1,0 +1,2 @@
+<!--pages/lifetimes/index.wxml-->
+<navigator url="/pages/my-component/index">点我跳转</navigator>

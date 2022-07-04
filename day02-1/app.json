@@ -1,8 +1,10 @@
 {
-  "entryPagePath": "pages/practice/practice",
+  "entryPagePath": "pages/lifetimes/index",
   "pages":[
     "pages/index/index",
-    "pages/practice/practice"
+    "pages/practice/practice",
+    "pages/one/one/one",
+    "pages/lifetimes/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
