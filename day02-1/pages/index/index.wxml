@@ -1,3 +1,4 @@
 <button open-type="openSetting">打开设置</button>
 <!-- 获取手机号 -->
 <button open-type="getPhoneNumber" bindgetphonenumber="phoneNumber">获取手机号</button>
+<rich-text nodes="{{htmlStr}}"></rich-text>

@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/index/index",
+  "entryPagePath": "pages/practice/practice",
   "pages":[
     "pages/index/index",
     "pages/practice/practice"

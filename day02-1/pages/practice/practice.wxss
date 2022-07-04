@@ -1,1 +1,18 @@
-/* pages/practice/practice.wxss */
+.box1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #dae8fc;
+}
+.box1 .content {
+  width: 200rpx;
+  height: 200rpx;
+  text-align: center;
+  line-height: 200rpx;
+  margin-top: 20px;
+  background-color: #ffe6cc;
+  border: 1px solid #e1a61b;
+}
+.content.active {
+  background-color: #f8cecc;
+}

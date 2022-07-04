@@ -1,2 +1,5 @@
 <!--pages/practice/practice.wxml-->
-<text>pages/practice/practice.wxml</text>
+<view>你选择的水果是：{{list[currentIndex]}}</view>
+<view class="box1">
+  <view class="{{index ===  currentIndex ? 'content active' : 'content'}}" data-index="{{index}}" wx:for="{{list}}" wx:key="*this" bindtap="headlerClick">{{item}}</view>
+</view>
