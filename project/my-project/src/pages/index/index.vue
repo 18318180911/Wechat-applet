@@ -24,7 +24,12 @@ import MyHeader from '@/components/MyHeader/MyHeader'
 			}
 		},
 		onLoad() {
-
+			// 发送网络请求
+			uni.request({
+				url: "https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata"
+			}).then((result) => {
+				console.log(result)
+			})
 		},
 		methods: {
 
