@@ -6,11 +6,17 @@
 		</view>
 		<view v-for="item in list" :key="item">{{item}}</view>
 		<navigator url="/pages/cart/index">购物车</navigator>
+		<MyHeader></MyHeader>
 	</view>
 </template>
 
 <script>
+import MyHeader from '@/components/MyHeader/MyHeader'
 	export default {
+		// 注册组件
+		components: {
+			MyHeader
+		},
 		data() {
 			return {
 				title: 'Hello',
