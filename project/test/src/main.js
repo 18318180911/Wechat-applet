@@ -8,4 +8,6 @@ App.mpType = 'app'
 const app = new Vue({
   ...App
 })
+import uView from 'uview-ui';
+Vue.use(uView);
 app.$mount()
