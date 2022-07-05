@@ -1,5 +1,5 @@
 <template>
-  <view>组件</view>
+  <view>组件1</view>
 </template>
 
 <script>
