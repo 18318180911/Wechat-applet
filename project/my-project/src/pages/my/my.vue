@@ -1,11 +1,13 @@
 <template>
-	<view>首页</view>
+  <view>我的</view>
 </template>
 
 <script>
-	export default {
-	}
+export default {
+
+}
 </script>
 
 <style>
+
 </style>
