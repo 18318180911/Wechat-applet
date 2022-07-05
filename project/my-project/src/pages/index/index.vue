@@ -1,5 +1,5 @@
 <template>
-	<view>首页</view>
+	<view><YgSearch></YgSearch></view>
 </template>
 
 <script>
