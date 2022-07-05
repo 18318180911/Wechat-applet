@@ -2,9 +2,10 @@
   "pages":[
     "pages/lists/lists",
     "pages/index/index",
-    "pages/logs/logs"
-    
+    "pages/logs/logs",
+    "pages/test/test"
   ],
+  "entryPagePath": "pages/test/test",
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",

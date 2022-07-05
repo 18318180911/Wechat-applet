@@ -1,0 +1,13 @@
+/* pages/test/test.wxss */
+input {
+  width: 150px;
+  height: 30px;
+  border: 1px solid #88a5cf;
+  background-color: #dae8fc;
+}
+button {
+  width: 30px;
+  height: 50px;
+  border: 1px solid #e5dee9;
+  background-color: #e1d5e7;
+}

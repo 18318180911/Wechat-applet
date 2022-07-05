@@ -2,3 +2,7 @@
 <navigator url="/pages/swiper/swiper">点击</navigator>
 <navigator open-type="switchTab" url="/pages/index/index">点击1</navigator>
 <navigator open-type="navigate">返回</navigator>
+<navigator target="miniProgram" short-link="#小程序://台风/M8q3EQazaoLzl2l">点击跳转</navigator>
+<navigator target="miniProgram" app-id="wx2ac2313767a99df9">跳转</navigator>
+<view>{{msg}}</view>
+<view bindtap="handlerTap">点一下</view>

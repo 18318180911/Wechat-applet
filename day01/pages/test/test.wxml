@@ -1,0 +1,3 @@
+<!--pages/test/test.wxml-->
+<input type="text"/>
+<button>确定</button>

@@ -1,2 +1,7 @@
 <!--pages/lifetimes/index.wxml-->
-<navigator url="/pages/my-component/index">点我跳转</navigator>
+<swiper style="height: 340rpx;" interval="1000" autoplay circular="true">
+<swiper-item wx:for="{{list}}" wx:key="goods_id" >
+<image mode="widthFix" style="width: 100vw;" src="{{item.image_src}}"></image>
+</swiper-item>
+</swiper>
+<navigator open-type="switchTab" url="/pages/one/one">按钮</navigator>
