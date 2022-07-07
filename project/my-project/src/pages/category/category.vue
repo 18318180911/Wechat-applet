@@ -19,7 +19,7 @@
         <view class="goods-group" v-for="item1 in contents" :key="item1.cat_id">
           <view class="goods-group-title">{{ item1.cat_name }}</view>
           <view class="goods-group-list">
-            <navigator v-for="item2 in item1.children" :key="item2.cat_id">
+            <navigator v-for="item2 in item1.children" :key="item2.cat_id" :url="'/pages/goods_list/goods_list?cid='+ item2.cat_id">
               <u-image
                 width="100%"
                 :src="item2.cat_icon"
@@ -43,7 +43,7 @@ export default {
       // 右边商品数组
       contents: [],
       // 控制左侧菜单选中下标
-      current: 0
+      current: 0,
     };
   },
   onLoad() {
@@ -60,12 +60,12 @@ export default {
       // 右边的数据
       this.contents = this.dataList[0].children;
     },
-     // 左侧菜单点击事件
+    // 左侧菜单点击事件
     handleSelectMenu(index) {
-      this.current = index
+      this.current = index;
       // 右侧 商品数组
-      this.contents = this.dataList[index].children
-    }
+      this.contents = this.dataList[index].children;
+    },
   },
 };
 </script>
