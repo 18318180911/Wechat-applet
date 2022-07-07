@@ -56,14 +56,30 @@ export default {
       goods: [],
     };
   },
+  // 形参来获取到 参数 cid
   onLoad(option) {
-    const cid = option.cid || 5;
-    console.log(34, cid);
-    this.getGoods(cid);
+    // const cid = option.cid || 5;
+    // console.log(34, cid);
+    // this.getGoods(cid);
+    // 全局变量 接口参数
+    this.params = {
+      // 否	string	关键字
+      query: "",
+      // 否	string	分类id
+      cid: "",
+      // 否	number	页码
+      pagenum: 1,
+      // 否	number	页容量
+      pagesize: 20,
+    };
+    this.params.cid = option.cid || 5;
+    this.getGoods();
   },
    onReachBottom() {
     if (this.total > this.goods.length) {
       console.log("还有下一页数据")
+      this.params.pagenum++
+      this.getGoods()
     } else {
       console.log("没有下一页数据");
       // 弹窗提示框
@@ -72,10 +88,11 @@ export default {
    },
   methods: {
     // 获取商品列表数据
-    async getGoods(cid) {
-      const result = await this.$u.get("/goods/search?cid=5", { cid });
+    async getGoods() {
+      const result = await this.$u.get("/goods/search", this.params);
       console.log(21, result);
-      this.goods = result.message.goods;
+      // this.goods = result.message.goods;
+      this.goods = [...this.goods, ...result.message.goods]
       // 获取total
       this.total = result.message.total
     },
@@ -100,10 +117,10 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      .goods-name {
-      }
-      .goods-price {
-      }
+      // .goods-name {
+      // }
+      // .goods-price {
+      // }
     }
   }
 }
