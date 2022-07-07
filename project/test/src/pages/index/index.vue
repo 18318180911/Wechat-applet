@@ -15,29 +15,41 @@
       </u-grid>
     </view>
     <!-- 楼层模块 -->
-    <view class="box-big">
-      <view class="fashion">时尚</view>
+    <view class="box-big" v-for="(item, index) in floorList" :key="index">
+      <view class="fashion">
+        <image class="fashion" :src="item.floor_title.image_src" />
+      </view>
       <view class="box">
         <view>
-          <u-grid :col="1" border>
+          <u-grid :col="1">
             <u-grid-item>
-              <view class="grid-text1">图片</view>
+              <view>
+                <image class="grid-text1" :src="item.product_list[0].image_src"/>
+              </view>
             </u-grid-item>
           </u-grid>
         </view>
         <view>
-          <u-grid :col="2" border>
+          <u-grid :col="2">
             <u-grid-item>
-              <view class="grid-text2">锁头</view>
+              <view>
+                <image class="grid-text2" :src="item.product_list[1].image_src"/>
+              </view>
             </u-grid-item>
             <u-grid-item>
-              <view class="grid-text2">沙漏</view>
+              <view>
+                <image class="grid-text2" :src="item.product_list[3].image_src"/>
+              </view>
             </u-grid-item>
             <u-grid-item>
-              <view class="grid-text3">锁头</view>
+              <view>
+                <image class="grid-text3" :src="item.product_list[2].image_src"/>
+              </view>
             </u-grid-item>
             <u-grid-item>
-              <view class="grid-text3">沙漏</view>
+              <view>
+                <image class="grid-text3" :src="item.product_list[4].image_src"/>
+              </view>
             </u-grid-item>
           </u-grid>
         </view>
@@ -83,6 +95,7 @@ export default {
     async getFloorData() {
       const result = await this.$u.get("/home/floordata");
       console.log(58, result);
+      this.floorList = result.message;
     },
   },
 };
@@ -92,36 +105,39 @@ export default {
 .grid-text {
   font-size: 28rpx;
   margin-top: 4rpx;
-  color: $u-type-info;
+  // color: $u-type-info;
 }
 .navigation {
   height: 140rpx;
   width: 128rpx;
 }
-.box-big {
-  border: 1px solid blue;
-}
+// .box-big {
+//   // border: 1px solid blue;
+// }
 .box {
 	display: flex;
+  margin-left: 10rpx;
 }
 .fashion {
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 59rpx;
 }
 .grid-text1 {
-  border: 1px solid yellowgreen;
+  // border: 1px solid yellowgreen;
   width: 232rpx;
   height: 386rpx;
 }
 .grid-text2 {
-  border: 1px solid green;
+  // border: 1px solid green;
   width: 233rpx;
   height: 188rpx;
+  // margin-left: 10rpx;
 }
 .grid-text3 {
-  border: 1px solid green;
+  // border: 1px solid green;
   width: 233rpx;
   height: 188rpx;
-  margin-top: -25px;
+  margin-top: -56rpx;
+  // margin-left: 10rpx;
 }
 </style>
