@@ -61,12 +61,23 @@ export default {
     console.log(34, cid);
     this.getGoods(cid);
   },
+   onReachBottom() {
+    if (this.total > this.goods.length) {
+      console.log("还有下一页数据")
+    } else {
+      console.log("没有下一页数据");
+      // 弹窗提示框
+      uni.showToast({ title: "没有更多数据啦", icon: "none" })
+    }
+   },
   methods: {
     // 获取商品列表数据
     async getGoods(cid) {
       const result = await this.$u.get("/goods/search?cid=5", { cid });
       console.log(21, result);
       this.goods = result.message.goods;
+      // 获取total
+      this.total = result.message.total
     },
     change(index) {
       this.current = index;
