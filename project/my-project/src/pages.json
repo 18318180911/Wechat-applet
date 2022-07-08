@@ -33,6 +33,12 @@
 				"navigationBarTitleText": "商品列表",
 				"enablePullDownRefresh": true
 			}
+		},
+		{
+			"path": "pages/goods_detail/goods_detail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
 		}
 
 	],

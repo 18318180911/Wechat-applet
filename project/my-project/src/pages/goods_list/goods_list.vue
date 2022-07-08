@@ -15,7 +15,11 @@
     </view>
     <view>
       <view v-if="current === 0" class="content">
-        <navigator v-for="item in goods" :key="item.goods_id">
+        <navigator
+          v-for="item in goods"
+          :key="item.goods_id"
+          :url="'/pages/goods_detail/goods_detail?goods_id=' + item.goods_id"
+        >
           <view class="goods-img">
             <u-image
               width="100%"
@@ -75,24 +79,24 @@ export default {
     this.params.cid = option.cid || 5;
     this.getGoods();
   },
-   onReachBottom() {
+  onReachBottom() {
     if (this.total > this.goods.length) {
-      console.log("还有下一页数据")
-      this.params.pagenum++
-      this.getGoods()
+      console.log("还有下一页数据");
+      this.params.pagenum++;
+      this.getGoods();
     } else {
       console.log("没有下一页数据");
       // 弹窗提示框
-      uni.showToast({ title: "没有更多数据啦", icon: "none" })
+      uni.showToast({ title: "没有更多数据啦", icon: "none" });
     }
-   },
+  },
   //  页面下拉刷新
   async onPullDownRefresh() {
     this.params.pagenum = 1;
-    this.goods = []
-    await this.getGoods()
+    this.goods = [];
+    await this.getGoods();
     // 关闭下拉刷新
-    uni.stopPullDownRefresh()
+    uni.stopPullDownRefresh();
   },
   methods: {
     // 获取商品列表数据
@@ -100,14 +104,13 @@ export default {
       const result = await this.$u.get("/goods/search", this.params);
       console.log(21, result);
       // this.goods = result.message.goods;
-      this.goods = [...this.goods, ...result.message.goods]
+      this.goods = [...this.goods, ...result.message.goods];
       // 获取total
-      this.total = result.message.total
+      this.total = result.message.total;
     },
     change(index) {
       this.current = index;
     },
-
   },
 };
 </script>
