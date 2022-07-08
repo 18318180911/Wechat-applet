@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view v-if="detailList">
     <!-- 1.轮播图 -->
     <u-swiper
       :list="detailList.pics"
@@ -9,6 +9,14 @@
       bg-color="#fff"
       @click="handlePreviewImage"
     ></u-swiper>
+    <!-- 2.商品价格 -->
+    <view class="goods-price u-p-10">￥{{ detailList.goods_price }}</view>
+    <!-- 3.商品名称 -->
+    <view class="goods-name u-line-2 u-m-10"
+      >{{ detailList.goods_name }}</view
+    >
+    <!-- 图片详情 -->
+     <u-parse :html="detailList.goods_introduce"></u-parse>
   </view>
 </template>
 
@@ -36,15 +44,15 @@ export default {
     // 点击轮播图
     // index 点击 第几张图片 下标
     handlePreviewImage(index) {
-        const urls = this.detailList.pics.map((item) => item.pics_big);
-        uni.previewImage({
-            // 数组构造即可
-            // 需要轮播图图书数组
-            urls,
-            // 你要先显示谁
-            current: urls[index]
-        })
-    }
+      const urls = this.detailList.pics.map((item) => item.pics_big);
+      uni.previewImage({
+        // 数组构造即可
+        // 需要轮播图图书数组
+        urls,
+        // 你要先显示谁
+        current: urls[index],
+      });
+    },
   },
 };
 </script>
