@@ -7,6 +7,7 @@
       height="497"
       img-mode="aspectFit"
       bg-color="#fff"
+      @click="handlePreviewImage"
     ></u-swiper>
   </view>
 </template>
@@ -20,7 +21,7 @@ export default {
       detailList: [],
     };
   },
-  onLoad() {
+  onLoad(option) {
     const goods_id = option.goods_id || 43984;
     console.log(17, goods_id);
     this.getDetail(goods_id);
@@ -32,6 +33,18 @@ export default {
       console.log(15, result);
       this.detailList = result.message;
     },
+    // 点击轮播图
+    // index 点击 第几张图片 下标
+    handlePreviewImage(index) {
+        const urls = this.detailList.pics.map((item) => item.pics_big);
+        uni.previewImage({
+            // 数组构造即可
+            // 需要轮播图图书数组
+            urls,
+            // 你要先显示谁
+            current: urls[index]
+        })
+    }
   },
 };
 </script>
