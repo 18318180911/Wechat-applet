@@ -86,6 +86,14 @@ export default {
       uni.showToast({ title: "没有更多数据啦", icon: "none" })
     }
    },
+  //  页面下拉刷新
+  async onPullDownRefresh() {
+    this.params.pagenum = 1;
+    this.goods = []
+    await this.getGoods()
+    // 关闭下拉刷新
+    uni.stopPullDownRefresh()
+  },
   methods: {
     // 获取商品列表数据
     async getGoods() {
@@ -99,6 +107,7 @@ export default {
     change(index) {
       this.current = index;
     },
+
   },
 };
 </script>

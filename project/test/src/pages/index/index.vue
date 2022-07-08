@@ -11,48 +11,16 @@
           <view class="grid-text">
             <image :src="item.image_src" mode="aspectFit" class="navigation" />
           </view>
-        </u-grid-item>
-      </u-grid>
+        </u-grid-item> </u-grid
+      >''
     </view>
     <!-- 楼层模块 -->
-    <view class="box-big" v-for="(item, index) in floorList" :key="index">
-      <view class="fashion">
-        <image class="fashion" :src="item.floor_title.image_src" />
-      </view>
-      <view class="box">
-        <view>
-          <u-grid :col="1">
-            <u-grid-item>
-              <view>
-                <image class="grid-text1" :src="item.product_list[0].image_src"/>
-              </view>
-            </u-grid-item>
-          </u-grid>
+    <view>
+      <view v-for="item1 in floorList" :key="item1.floor_title.name">
+        <view class="floor-title">
+          <u-image width="100%" mode="widthFix" :src="item1.floor_title.image_src"></u-image>
         </view>
-        <view>
-          <u-grid :col="2">
-            <u-grid-item>
-              <view>
-                <image class="grid-text2" :src="item.product_list[1].image_src"/>
-              </view>
-            </u-grid-item>
-            <u-grid-item>
-              <view>
-                <image class="grid-text2" :src="item.product_list[3].image_src"/>
-              </view>
-            </u-grid-item>
-            <u-grid-item>
-              <view>
-                <image class="grid-text3" :src="item.product_list[2].image_src"/>
-              </view>
-            </u-grid-item>
-            <u-grid-item>
-              <view>
-                <image class="grid-text3" :src="item.product_list[4].image_src"/>
-              </view>
-            </u-grid-item>
-          </u-grid>
-        </view>
+        <view class="floor-list"></view>
       </view>
     </view>
   </view>
@@ -110,34 +78,5 @@ export default {
 .navigation {
   height: 140rpx;
   width: 128rpx;
-}
-// .box-big {
-//   // border: 1px solid blue;
-// }
-.box {
-	display: flex;
-  margin-left: 10rpx;
-}
-.fashion {
-  // border: 1px solid red;
-  height: 59rpx;
-}
-.grid-text1 {
-  // border: 1px solid yellowgreen;
-  width: 232rpx;
-  height: 386rpx;
-}
-.grid-text2 {
-  // border: 1px solid green;
-  width: 233rpx;
-  height: 188rpx;
-  // margin-left: 10rpx;
-}
-.grid-text3 {
-  // border: 1px solid green;
-  width: 233rpx;
-  height: 188rpx;
-  margin-top: -56rpx;
-  // margin-left: 10rpx;
 }
 </style>
