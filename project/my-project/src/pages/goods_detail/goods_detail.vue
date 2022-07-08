@@ -52,7 +52,7 @@
         </view>
       </view>
       <view class="right">
-        <view class="cart btn u-line-1">加入购物车</view>
+        <view class="cart btn u-line-1" @click="handleAddCart">加入购物车</view>
         <view class="buy btn u-line-1">立即购买</view>
       </view>
     </view>
@@ -60,6 +60,8 @@
 </template>
 
 <script>
+// 引入vuex辅助函数
+import {mapMutations} from "vuex"
 import { option } from "@dcloudio/vue-cli-plugin-uni/packages/postcss/tags";
 export default {
   data() {
@@ -97,6 +99,12 @@ export default {
         current: urls[index],
       });
     },
+    ...mapMutations("cart", ["cartAddGoods"]),
+    // 加入购物车
+    handleAddCart() {
+          // 需要自己添加两个属性 选中状态 和 购买的数量
+        this.cartAddGoods({...this.goodsDetail, checked: true, num: 1})
+    }
   },
 };
 </script>
