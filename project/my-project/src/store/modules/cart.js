@@ -4,19 +4,25 @@ export default {
       // 数组
       goodsList: [],
     },
-    getters: {},
+    getters: {
+        // 总商品的购买数量
+        goodsTotalNums(state) {
+            // 数组方法reduce
+            return state.goodsList.reduce((s, i) => (s += i.nums), 0)
+        }
+    },
     mutations: {
         // 添加数据到购物车数组中
         cartAddGoods(state, payload) {
             // state.goodsList.push(payload);
             const index = state.goodsList.findIndex(
-                (goods) => goods.goods_id === playload.goods_id
+                (goods) => goods.goods_id === payload.goods_id
             );
             if (index !== -1) {
                 state.goodsList[index].nums++;
             } else {
                 // 不存在
-                state.goodsList.push(playload)
+                state.goodsList.push(payload)
             }
             console.log(12, state.goodsList);
         }

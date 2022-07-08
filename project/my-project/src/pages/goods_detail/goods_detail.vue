@@ -1,23 +1,24 @@
 <template>
-  <view v-if="detailList">
-    <!-- 1.轮播图 -->
+  <view v-if="goodsDetail">
+    <!-- 1 轮播图 -->
     <u-swiper
-      :list="detailList.pics"
+      :list="goodsDetail.pics"
       name="pics_big"
       height="497"
       img-mode="aspectFit"
       bg-color="#fff"
       @click="handlePreviewImage"
     ></u-swiper>
-    <!-- 2.商品价格 -->
-    <view class="goods-price u-p-10">￥{{ detailList.goods_price }}</view>
-    <!-- 3.商品名称 -->
-    <view class="goods-name u-line-2 u-m-10"
-      >{{ detailList.goods_name }}</view
-    >
-    <!-- 图片详情 -->
-     <u-parse :html="detailList.goods_introduce"></u-parse>
-     <!-- 4 购物车工具栏 -->
+
+    <!-- 2 商品价格 -->
+    <view class="goods-price u-p-10">￥{{goodsDetail.goods_price}}</view>
+    <view class="goods-name u-line-2 u-m-10">{{goodsDetail.goods_name}}</view>
+    <!-- 3 图文详情 -->
+    <!-- <rich-text :nodes="goodsDetail.goods_introduce"></rich-text>
+    <view v-html="goodsDetail.goods_introduce"></view> -->
+    <u-parse :html="goodsDetail.goods_introduce"></u-parse>
+
+    <!-- 4 购物车工具栏 -->
     <view class="navigation">
       <view class="left">
         <view class="item">
@@ -39,7 +40,7 @@
         <view class="item car">
           <u-badge
             class="car-num"
-            :count="9"
+            :count="goodsTotalNums"
             type="error"
             :offset="[-3, -6]"
           ></u-badge>
@@ -52,45 +53,66 @@
         </view>
       </view>
       <view class="right">
-        <view class="cart btn u-line-1" @click="handleAddCart">加入购物车</view>
-        <view class="buy btn u-line-1">立即购买</view>
+        <view
+          class="cart btn u-line-1"
+          @click="handleAddCart"
+        >加入购物车</view>
+        <view class="buy btn u-line-1">立即购买 </view>
       </view>
     </view>
   </view>
 </template>
 
 <script>
-// 引入vuex辅助函数
-import {mapMutations} from "vuex"
-import { option } from "@dcloudio/vue-cli-plugin-uni/packages/postcss/tags";
+/* 
+0 在商品详情页面 购物车工具栏 显示 购买的所有的商品的总数量 
+
+1 给加入购物车按钮 绑定点击事件
+
+2 获取到 需要购买商品信息 
+
+3 把数据传递到 vuex中cart数组中 mutation-同步   action-异步
+  辅助函数 map。。。
+
+
+ */
+
+// 引入 vuex辅助函数
+import { mapMutations, mapGetters } from "vuex";
 export default {
   data() {
     return {
       // 商品详情对象
-      detailList: null,
+      goodsDetail: null,
     };
   },
   computed: {
-    // username() {
-    //   return this.$store.state.username;
-    // },
+    ...mapGetters("cart", ["goodsTotalNums"]),
   },
   onLoad(option) {
-    const goods_id = option.goods_id || 43984;
-    console.log(17, goods_id);
-    this.getDetail(goods_id);
+    // 43984 直接打开详情页面时候，没有人给我们传递商品id 自己构造一个 方便页面调试
+    // goods_id=53945
+    const goods_id = option.goods_id || 53945;
+
+    // 根据商品id  获取商品详情
+    this.getGoodsDetail(goods_id);
   },
   methods: {
-    // 获取商品详情数据
-    async getDetail(goods_id) {
+    // 陌生
+    ...mapMutations("cart", ["cartAddGoods"]),
+
+    // 根据id获取商品详情
+    async getGoodsDetail(goods_id) {
       const result = await this.$u.get("/goods/detail", { goods_id });
-      console.log(15, result);
-      this.detailList = result.message;
+      console.log(result);
+      this.goodsDetail = result.message;
     },
     // 点击轮播图
     // index 点击 第几张图片 下标
     handlePreviewImage(index) {
-      const urls = this.detailList.pics.map((item) => item.pics_big);
+      // console.log(index);
+      // console.log(this.goodsDetail.pics);
+      const urls = this.goodsDetail.pics.map((item) => item.pics_big);
       uni.previewImage({
         // 数组构造即可
         // 需要轮播图图书数组
@@ -99,12 +121,12 @@ export default {
         current: urls[index],
       });
     },
-    ...mapMutations("cart", ["cartAddGoods"]),
     // 加入购物车
     handleAddCart() {
-          // 需要自己添加两个属性 选中状态 和 购买的数量
-        this.cartAddGoods({...this.goodsDetail, checked: true, num: 1})
-    }
+      // console.log(this.goodsDetail);
+      // 需要自己添加两个属性 选中状态 和 购买的数量
+      this.cartAddGoods({ ...this.goodsDetail, checked: true, nums: 1 });
+    },
   },
 };
 </script>
