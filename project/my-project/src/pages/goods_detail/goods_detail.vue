@@ -53,7 +53,7 @@
       </view>
       <view class="right">
         <view class="cart btn u-line-1">加入购物车</view>
-        <view class="buy btn u-line-1">立即购买{{username}}</view>
+        <view class="buy btn u-line-1">立即购买</view>
       </view>
     </view>
   </view>
@@ -69,9 +69,9 @@ export default {
     };
   },
   computed: {
-    username() {
-      return this.$store.state.username;
-    },
+    // username() {
+    //   return this.$store.state.username;
+    // },
   },
   onLoad(option) {
     const goods_id = option.goods_id || 43984;
