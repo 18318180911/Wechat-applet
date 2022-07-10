@@ -1,8 +1,15 @@
 <template>
   <view class="cart">
     <!-- 1 列表 -->
-    <view class="cart-list">
-      <view class="cart-item" v-for="(item, index) in goodsList" :key="item.goods_id">
+    <view
+      class="cart-list"
+      v-if="goodsList.length"
+    >
+      <view
+        class="cart-item"
+        v-for="item in goodsList"
+        :key="item.goods_id"
+      >
         <!-- 1 复选框 -->
         <view class="goods-chk">
           <u-checkbox
@@ -28,13 +35,27 @@
           <view class="goods-price-num">
             <view class="goods-price">￥{{item.goods_price}}</view>
             <view class="goods-num-tool">
-              <view class="num-btn" @click="handleChangeNum(item.goods_id, -1, item.nums)">-</view>
+              <view
+                class="num-btn"
+                @click="handleChangeNum(item.goods_id,-1,item.nums)"
+              >-</view>
               <view class="goods-num">{{item.nums}}</view>
-              <view class="num-btn" @click="handleGoodsChange(item.goods_id, 1, item.nums)">+</view>
+              <view
+                class="num-btn"
+                @click="handleChangeNum(item.goods_id,1,item.nums)"
+              >+</view>
             </view>
           </view>
         </view>
       </view>
+
+    </view>
+    <view v-else>
+      <u-image
+        width="100%"
+        mode="widthFix"
+        src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.huabanimg.com%2Fa4064bdab5f6c800ed664014f3eb7d13a4dd25b3138d0-hYHe07_fw658&refer=http%3A%2F%2Fhbimg.huabanimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1660018046&t=e237a4269f24da4ba5c75624f25b326a"
+      ></u-image>
     </view>
     <!-- 2 统计 -->
     <view class="statistics">
@@ -56,16 +77,21 @@
 </template>
 
 <script>
-// 引入辅助函数
-import { mapState, mapMutations } from 'vuex'
+// 引入辅助函数 方便我们获取数据
+import { mapState, mapMutations } from "vuex";
 export default {
   computed: {
     // 获取vuex中的数据
-    ...mapState("cart", ["goodsList"])
+    ...mapState("cart", ["goodsList"]),
   },
   methods: {
-    ...mapMutations("cart", ["changeGoodsChecked", "changeGoodsNum"]),
-      // 复选框 切换选中
+    ...mapMutations("cart", [
+      "changeGoodsChecked",
+      "changeGoodsNum",
+      "deleteGoods",
+    ]),
+
+    // 复选框 切换选中
     handleGoodsChange(goods_id) {
       /* 
      1 获取当前被修改的商品的id 
@@ -89,6 +115,10 @@ export default {
       /* 
       1 获取商品的id 和 增加和减少多少
       1.5 根据当前的数量 和点击  “-”  做额外处理！！！
+         1 当数量为 1 同时 你点击 "-"  弹出窗口询问用户 是否确定删除
+         2 点击取消 什么都不做
+         2 点击确定  删除数据的业务！！！ 
+            deleteGoods mutations
       
       
       
@@ -100,24 +130,24 @@ export default {
       
        */
       // console.log(goods_id, unit);
+
+      // uniapp 返回值 改造 返回 数组
+
       if (unit === -1 && nums === 1) {
-        console.log("弹出窗口");
-        const [err, {confirm}] = await uni.showModal({
+        // 弹出窗口。。。
+        console.log("弹出窗口。。。");
+        const [err, { confirm }] = await uni.showModal({
           title: "警告",
-          content: "您确定删除吗"
+          content: "您舍得删除吗😶",
         });
-        // 判断要删除还是不删除
-        if (confirm) {
-          // 要执行删除的业务
-        } else {
-          console.log('都不做')
-        }
+        // 判断 要删除还是不要
+        confirm && this.deleteGoods({ goods_id });
       } else {
+        // 数量编辑
         this.changeGoodsNum({ goods_id, unit });
       }
-      
     },
-  }
+  },
 };
 </script>
 
