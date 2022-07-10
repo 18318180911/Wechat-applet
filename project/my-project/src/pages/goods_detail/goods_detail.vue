@@ -37,7 +37,7 @@
           ></u-icon>
           <view class="text u-line-1">店铺</view>
         </view>
-        <view class="item car">
+        <navigator class="item car" url="/pages/cart/cart" open-type="switchTab">
           <u-badge
             class="car-num"
             :count="goodsTotalNums"
@@ -50,7 +50,7 @@
             :color="$u.color['contentColor']"
           ></u-icon>
           <view class="text u-line-1">购物车</view>
-        </view>
+        </navigator>
       </view>
       <view class="right">
         <view
