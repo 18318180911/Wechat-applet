@@ -9,6 +9,7 @@
             :value="item.checked"
             shape="circle"
             active-color="red"
+            @change="handleGoodsChange(item.goods_id)"
           ></u-checkbox>
         </view>
         <!-- 2 图片 -->
@@ -56,11 +57,33 @@
 
 <script>
 // 引入辅助函数
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   computed: {
     // 获取vuex中的数据
     ...mapState("cart", ["goodsList"])
+  },
+  methods: {
+    ...mapMutations("cart", ["changeGoodsChecked"]),
+      // 复选框 切换选中
+    handleGoodsChange(goods_id) {
+      /* 
+     1 获取当前被修改的商品的id 
+     2 把id 传入vuex中cart模块  mutations  changeGoodsChecked
+      1 回到 vuex中定义 mutations
+      2 在组件中 mapMutations 来获取到 函数
+      3 最后组件直接 使用 
+     3 回到 vuex-cart 接收id 编写业务
+      1 接收id
+      2 根据id查找数组中对应元素的下标
+      3 数组[下标].checked = !数组[下标].checked;
+      4 存一份到本地存储中 
+      */
+      // console.log(goods_id);
+
+      // 切换当前元素的选中状态
+      this.changeGoodsChecked({ goods_id });
+    },
   }
 };
 </script>
