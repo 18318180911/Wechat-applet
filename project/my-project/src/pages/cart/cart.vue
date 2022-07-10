@@ -163,6 +163,17 @@ export default {
     // 点击滑动菜单按钮
     async handleSwipeClick(row, index, goods_id) {
       console.log(row, index, goods_id)
+       if (index === 1) {
+        // 点击删除
+        const [err, { confirm }] = await uni.showModal({
+          title: "警告",
+          content: "您舍得删除吗😶",
+        });
+        //
+        confirm && this.deleteGoods({ goods_id });
+      } else {
+        // 其他业务
+      }
     }
   },
 };
