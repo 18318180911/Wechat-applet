@@ -5,6 +5,7 @@
       <u-swipe-action 
 			v-for="item in goodsList" :key="item.goods_id"
 			:options="options"
+      @click="(row, index) => {handleSwipeClick(row, index, item.goods_id);}"
 		>
       <view class="cart-item" >
         <!-- 1 复选框 -->
@@ -75,6 +76,7 @@ import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
+      // 滑动
       options: [
 					{
 						text: '收藏',
@@ -158,6 +160,10 @@ export default {
         this.changeGoodsNum({ goods_id, unit });
       }
     },
+    // 点击滑动菜单按钮
+    async handleSwipeClick(row, index, goods_id) {
+      console.log(row, index, goods_id)
+    }
   },
 };
 </script>
