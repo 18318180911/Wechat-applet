@@ -2,7 +2,9 @@ export default {
     namespaced: true,
     state: {
       // 数组
-      goodsList: [],
+    //   goodsList: [
+        goodsList: uni.getStorageSync('goodsList') || [],
+    //   ],
     },
     getters: {
         // 总商品的购买数量
@@ -25,6 +27,8 @@ export default {
                 state.goodsList.push(payload)
             }
             console.log(12, state.goodsList);
+             // 存一份数据到 本地存储中
+            uni.setStorageSync('goodsList', state.goodsList);
         }
     },
     actions: {},
