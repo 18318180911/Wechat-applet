@@ -16,18 +16,19 @@
           <u-image
             width="191rpx"
             height="191rpx"
+            :src="item.goods_small_logo"
           ></u-image>
         </view>
         <!-- 3 信息 -->
         <view class="goods-info">
           <!-- 名称 -->
-          <view class="goods-name u-line-2"></view>
+          <view class="goods-name u-line-2">{{item.goods_name}}</view>
           <!-- 价格和数量 -->
           <view class="goods-price-num">
-            <view class="goods-price">￥xxx</view>
+            <view class="goods-price">￥{{item.goods_price}}</view>
             <view class="goods-num-tool">
               <view class="num-btn">-</view>
-              <view class="goods-num">xxx</view>
+              <view class="goods-num">{{item.nums}}</view>
               <view class="num-btn">+</view>
             </view>
           </view>
