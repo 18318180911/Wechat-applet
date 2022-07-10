@@ -88,8 +88,6 @@ export default {};
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    .goods-name {
-    }
 
     .goods-price-num {
       display: flex;
@@ -104,9 +102,6 @@ export default {};
 
         display: flex;
         justify-content: flex-end;
-
-        .goods-vnum {
-        }
       }
     }
   }
@@ -125,11 +120,6 @@ export default {};
   .all-price {
     flex: 1;
     color: #666;
-    text {
-    }
-  }
-
-  .all-count {
   }
 }
 </style>

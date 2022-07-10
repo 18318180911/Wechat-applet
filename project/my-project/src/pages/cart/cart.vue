@@ -28,9 +28,9 @@
           <view class="goods-price-num">
             <view class="goods-price">￥{{item.goods_price}}</view>
             <view class="goods-num-tool">
-              <view class="num-btn" @click="handleChangeNum(item.goods_id,-1)">-</view>
+              <view class="num-btn" @click="handleChangeNum(item.goods_id, -1, item.nums)">-</view>
               <view class="goods-num">{{item.nums}}</view>
-              <view class="num-btn" @click="handleGoodsChange(item.goods_id), 1">+</view>
+              <view class="num-btn" @click="handleGoodsChange(item.goods_id, 1, item.nums)">+</view>
             </view>
           </view>
         </view>
@@ -85,7 +85,7 @@ export default {
       this.changeGoodsChecked({ goods_id });
     },
     // 修改商品数量
-    handleChangeNum(goods_id, unit) {
+    async handleChangeNum(goods_id, unit, nums) {
       /* 
       1 获取商品的id 和 增加和减少多少
       1.5 根据当前的数量 和点击  “-”  做额外处理！！！
@@ -100,7 +100,22 @@ export default {
       
        */
       // console.log(goods_id, unit);
-      this.changeGoodsNum({ goods_id, unit });
+      if (unit === -1 && nums === 1) {
+        console.log("弹出窗口");
+        const [err, {confirm}] = await uni.showModal({
+          title: "警告",
+          content: "您确定删除吗"
+        });
+        // 判断要删除还是不删除
+        if (confirm) {
+          // 要执行删除的业务
+        } else {
+          console.log('都不做')
+        }
+      } else {
+        this.changeGoodsNum({ goods_id, unit });
+      }
+      
     },
   }
 };
