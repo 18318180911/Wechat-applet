@@ -2,11 +2,11 @@
   <view class="cart">
     <!-- 1 列表 -->
     <view class="cart-list">
-      <view class="cart-item">
+      <view class="cart-item" v-for="(item, index) in goodsList" :key="item.goods_id">
         <!-- 1 复选框 -->
         <view class="goods-chk">
           <u-checkbox
-            value=""
+            :value="item.checked"
             shape="circle"
             active-color="red"
           ></u-checkbox>
@@ -54,7 +54,14 @@
 </template>
 
 <script>
-export default {};
+// 引入辅助函数
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    // 获取vuex中的数据
+    ...mapState("cart", ["goodsList"])
+  }
+};
 </script>
 
 <style lang="scss">
