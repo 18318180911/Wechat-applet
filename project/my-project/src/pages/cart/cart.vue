@@ -28,9 +28,9 @@
           <view class="goods-price-num">
             <view class="goods-price">￥{{item.goods_price}}</view>
             <view class="goods-num-tool">
-              <view class="num-btn">-</view>
+              <view class="num-btn" @click="handleChangeNum(item.goods_id,-1)">-</view>
               <view class="goods-num">{{item.nums}}</view>
-              <view class="num-btn">+</view>
+              <view class="num-btn" @click="handleGoodsChange(item.goods_id), 1">+</view>
             </view>
           </view>
         </view>
@@ -64,7 +64,7 @@ export default {
     ...mapState("cart", ["goodsList"])
   },
   methods: {
-    ...mapMutations("cart", ["changeGoodsChecked"]),
+    ...mapMutations("cart", ["changeGoodsChecked", "changeGoodsNum"]),
       // 复选框 切换选中
     handleGoodsChange(goods_id) {
       /* 
@@ -83,6 +83,24 @@ export default {
 
       // 切换当前元素的选中状态
       this.changeGoodsChecked({ goods_id });
+    },
+    // 修改商品数量
+    handleChangeNum(goods_id, unit) {
+      /* 
+      1 获取商品的id 和 增加和减少多少
+      1.5 根据当前的数量 和点击  “-”  做额外处理！！！
+      
+      
+      
+      2 把id和增加 或者 减少数量  发送给 vuex-cart-mutations - changeGoodsNum
+      3 vuex-cart-mutations - changeGoodsNum 接收数据 goods_id 和 +1 -1 
+        1 根据id 获取到数组对应的 下标
+        2 数组[下标].nums += unit
+        3 存一份到本地存储中 
+      
+       */
+      // console.log(goods_id, unit);
+      this.changeGoodsNum({ goods_id, unit });
     },
   }
 };

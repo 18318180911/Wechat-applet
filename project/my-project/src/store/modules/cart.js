@@ -47,6 +47,15 @@ export default {
         state.goodsList[index].checked = !state.goodsList[index].checked;
         uni.setStorageSync('goodsList', state.goodsList);
       },
+      // 根据id 修改购买的数量
+    changeGoodsNum(state, { goods_id, unit }) {
+        const index = state.goodsList.findIndex(
+          (item) => item.goods_id === goods_id
+        );
+        state.goodsList[index].nums += unit;
+        // 存一份数据到 本地存储中
+        uni.setStorageSync('goodsList', state.goodsList);
+      },
     },
     actions: {},
   };
