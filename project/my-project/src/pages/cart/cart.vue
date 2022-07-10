@@ -1,15 +1,12 @@
 <template>
   <view class="cart">
     <!-- 1 列表 -->
-    <view
-      class="cart-list"
-      v-if="goodsList.length"
-    >
-      <view
-        class="cart-item"
-        v-for="item in goodsList"
-        :key="item.goods_id"
-      >
+    <view class="cart-list" v-if="goodsList.length">
+      <u-swipe-action 
+			v-for="item in goodsList" :key="item.goods_id"
+			:options="options"
+		>
+      <view class="cart-item" >
         <!-- 1 复选框 -->
         <view class="goods-chk">
           <u-checkbox
@@ -30,25 +27,27 @@
         <!-- 3 信息 -->
         <view class="goods-info">
           <!-- 名称 -->
-          <view class="goods-name u-line-2">{{item.goods_name}}</view>
+          <view class="goods-name u-line-2">{{ item.goods_name }}</view>
           <!-- 价格和数量 -->
           <view class="goods-price-num">
-            <view class="goods-price">￥{{item.goods_price}}</view>
+            <view class="goods-price">￥{{ item.goods_price }}</view>
             <view class="goods-num-tool">
               <view
                 class="num-btn"
-                @click="handleChangeNum(item.goods_id,-1,item.nums)"
-              >-</view>
-              <view class="goods-num">{{item.nums}}</view>
+                @click="handleChangeNum(item.goods_id, -1, item.nums)"
+                >-</view
+              >
+              <view class="goods-num">{{ item.nums }}</view>
               <view
                 class="num-btn"
-                @click="handleChangeNum(item.goods_id,1,item.nums)"
-              >+</view>
+                @click="handleChangeNum(item.goods_id, 1, item.nums)"
+                >+</view
+              >
             </view>
           </view>
         </view>
       </view>
-
+      </u-swipe-action>
     </view>
     <view v-else>
       <u-image
@@ -60,17 +59,11 @@
     <!-- 2 统计 -->
     <view class="statistics">
       <view class="all-chk">
-        <u-checkbox
-          shape="circle"
-          active-color="red"
-        >全选</u-checkbox>
+        <u-checkbox shape="circle" active-color="red">全选</u-checkbox>
       </view>
       <view class="all-price"> 合计: <text>￥xxx</text> </view>
       <view class="all-count">
-        <u-button
-          type="error"
-          shape="circle"
-        >去结算(xxx)</u-button>
+        <u-button type="error" shape="circle">去结算(xxx)</u-button>
       </view>
     </view>
   </view>
@@ -80,6 +73,24 @@
 // 引入辅助函数 方便我们获取数据
 import { mapState, mapMutations } from "vuex";
 export default {
+  data() {
+    return {
+      options: [
+					{
+						text: '收藏',
+						style: {
+							backgroundColor: '#007aff'
+						}
+					},
+					{
+						text: '删除',
+						style: {
+							backgroundColor: '#dd524d'
+						}
+					}
+				]
+    }
+  },
   computed: {
     // 获取vuex中的数据
     ...mapState("cart", ["goodsList"]),
@@ -180,9 +191,6 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        .goods-name {
-        }
-
         .goods-price-num {
           display: flex;
           justify-content: space-between;
@@ -220,17 +228,10 @@ export default {
     display: flex;
     align-items: center;
     padding: 15rpx;
-    .all-chk {
-    }
 
     .all-price {
       flex: 1;
       color: #666;
-      text {
-      }
-    }
-
-    .all-count {
     }
   }
 }
